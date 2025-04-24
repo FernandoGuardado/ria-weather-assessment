@@ -36,7 +36,7 @@ onBeforeMount(async () => {
     </div>
     <template v-else-if="api.data.value.list">
       <HourlyForecast :forecast="api.data.value" />
-      <FiveDayForecast :forecast="api.data.value?.list!" />
+      <FiveDayForecast :forecast="api.data.value" />
     </template>
   </div>
 </template>

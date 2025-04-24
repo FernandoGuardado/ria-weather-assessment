@@ -143,7 +143,7 @@ button:focus-visible {
 
     > h2 {
       border-bottom: 2px solid var(--primary-color);
-      padding-bottom: 0.25rem;
+      padding-bottom: 0.5rem;
     }
   }
 }
@@ -174,14 +174,40 @@ button:focus-visible {
 }
 
 #five-day-forecast {
+  flex: 1;
   > h2 {
     margin-bottom: 0;
   }
   overflow: hidden;
   .five-day-forecast-item-container {
+    display: flex;
+    flex-direction: column;
     overflow: scroll;
+    gap: 1rem;
+    padding-inline: 1rem;
 
     .five-day-forecast-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-block: 1rem;
+      border-bottom: 2px solid var(--primary-color);
+      gap: 1rem;
+
+      .five-day-forecast-details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        > h2 {
+          margin: 0.5rem;
+        }
+
+        > h3 {
+          color: lightgray;
+          margin: 0;
+        }
+      }
     }
   }
 }

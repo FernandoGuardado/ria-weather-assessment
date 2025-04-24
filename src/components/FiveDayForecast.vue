@@ -1,10 +1,17 @@
 <script setup lang="ts">
-import type { List } from '../api/open-weather-map';
+import { computed } from 'vue';
+import type { FiveDayForecast } from '../api/open-weather-map';
 import FiveDayForecastItem from './FiveDayForecastItem.vue';
 
 const { forecast } = defineProps<{
-  forecast: List[];
+  forecast: FiveDayForecast;
 }>();
+
+const dailyForecast = computed(() => {
+  return forecast.list.filter((_, index) => {
+    return index % 8 === 0;
+  })
+})
 </script>
 
 <template>
@@ -12,7 +19,7 @@ const { forecast } = defineProps<{
     <h2>5 Day Forecast</h2>
 
     <div class="five-day-forecast-item-container">
-      <FiveDayForecastItem v-for="f in forecast" :key="f.dt" :forecast="f" />
+      <FiveDayForecastItem v-for="f in dailyForecast" :key="f.dt" :forecast="f" />
     </div>
   </div>
 </template>
