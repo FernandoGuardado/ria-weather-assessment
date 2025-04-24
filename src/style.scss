@@ -105,6 +105,59 @@ button:focus-visible {
   @media (max-width: $breakpoint-lg) {
     height: 6rem;
   }
+
+  #search {
+    // position: absolute;
+    // right: var(--screen-gutter);
+    position: relative;
+    .search-input {
+      height: 2.5rem;
+      width: 40rem;
+      padding-left: 1rem;
+
+      @media (max-width: $breakpoint-md) {
+        width: 20rem;
+      }
+      @media (max-width: $breakpoint-sm) {
+        width: fit-content;
+      }
+    }
+
+    .search-results {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: var(--primary-color);
+      border-radius: 0.5rem;
+      overflow-y: auto;
+      max-height: 20rem;
+      width: 38rem;
+      z-index: 1;
+      gap: 0.5rem;
+      padding-bottom: 1.2rem;
+      padding-right: 1rem;
+      border: 1px solid var(--primary-color-light);
+
+      @media (max-width: $breakpoint-md) {
+        width: 18rem;
+      }
+      @media (max-width: $breakpoint-sm) {
+        width: fit-content;
+      }
+
+      .search-result-item {
+        padding: 0.5rem;
+        cursor: pointer;
+        border-bottom: 2px solid var(--primary-color-light);
+        max-width: inherit;
+
+        &:hover {
+          background-color: var(--primary-color-light);
+        }
+      }
+    }
+  }
 }
 
 #footer {

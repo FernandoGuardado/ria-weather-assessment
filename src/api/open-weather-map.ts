@@ -118,10 +118,8 @@ export class OpenWeatherMap {
       return;
     }
 
-    console.log('getFiveDayForecast', lat, lon, cnt);
     this.isLoading.value = true;
     this.error.value = null;
-    console.log('HERE')
 
     const url = new URL(FIVE_DAY_FORECAST_URL);
     const params: { [key: string]: string } = {

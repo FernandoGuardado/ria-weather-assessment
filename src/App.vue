@@ -5,7 +5,7 @@ import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
 import Weather from './components/Weather.vue'
 import { OpenWeatherMap } from './api/open-weather-map'
-import { citiesMetadata, type CityRecord } from './utils/csv'
+import { citiesMetadata } from './utils/csv'
 
 export type City = {
   name: string
@@ -46,6 +46,25 @@ const handleRefreshCities = async () => {
   }
 }
 
+const handleSearch = async (cityName: string) => {
+  const city = citiesMetadata[cityName]
+  if (city) {
+    selectedCity.value = {
+      name: city.city,
+      lat: city.latitude,
+      lon: city.longitude
+    }
+    await handleRefreshCities()
+    cities.value.push({
+      name: city.city,
+      lat: city.latitude,
+      lon: city.longitude
+    })
+  } else {
+    console.warn(`City ${cityName} not found in metadata`)
+  }
+}
+
 watch(selectedCity, () => {
   lastUpdated.value = new Date()
 })
@@ -53,13 +72,12 @@ watch(selectedCity, () => {
 onMounted(() => {
   console.log('App mounted')
   console.log('Selected City:', selectedCity.value)
-  console.log('Cities:', JSON.stringify(cities.value, null, 2))
 })
 </script>
 
 <template>
   <div id="app">
-    <Navbar />
+    <Navbar @search="handleSearch" />
     <Cities :cities="cities" v-model:selectedCity="selectedCity" @refresh-cities="handleRefreshCities" />
     <Weather :city="selectedCity" :selectedCity :api />
     <Footer :lastUpdated />
