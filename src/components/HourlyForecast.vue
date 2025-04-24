@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { FiveDayForecast, List } from '../api/open-weather-map';
+import type { FiveDayForecast } from '../api/open-weather-map';
 import HourlyForecastCard from './HourlyForecastCard.vue';
 
 const { forecast } = defineProps<{
