@@ -6,6 +6,7 @@ defineProps<{
 
 <template>
   <div id="footer">
-    <p>Last Updated: {{ lastUpdated.toLocaleString() }}</p>
+    <p class="made-by">Made by FernandoGuardado {{ `<3` }} </p>
+        <p>Last Updated: {{ lastUpdated.toLocaleString() }}</p>
   </div>
 </template>

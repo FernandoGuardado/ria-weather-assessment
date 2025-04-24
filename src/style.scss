@@ -40,6 +40,10 @@ body {
   color: #ffffff;
   font-size: 0.8rem;
 
+  @media (max-width: $breakpoint-sm) {
+    font-size: 0.25rem;
+  }
+
   @media (max-width: $breakpoint-md) {
     font-size: 0.4rem;
   }
@@ -87,6 +91,16 @@ button:focus-visible {
   height: 100vh;
   overflow-x: hidden;
   min-width: $breakpoint-xs;
+
+  @media (max-width: $breakpoint-xs) {
+    font-size: 0.3rem;
+  }
+  @media (max-width: $breakpoint-sm) {
+    font-size: 0.4rem;
+  }
+  @media (max-width: $breakpoint-md) {
+    font-size: 0.5rem;
+  }
 }
 
 #navbar {
@@ -161,9 +175,17 @@ button:focus-visible {
 #footer {
   background-color: var(--primary-color-light);
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding-inline: var(--screen-gutter);
   font-size: 0.75rem;
+
+  @media (max-width: 600px) {
+    font-size: 0.5rem;
+  }
+
+  .made-by {
+    color: rgba(211, 211, 211, 0.568);
+  }
 }
 
 #cities {
@@ -171,7 +193,7 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-inline: var(--screen-gutter);
+  padding-right: var(--screen-gutter);
   gap: 1rem;
 
   > section {
@@ -188,8 +210,12 @@ button:focus-visible {
   }
 
   #refresh {
-    padding: 1rem 2.5rem;
+    padding: 1rem 1.8rem;
     font-weight: 900;
+
+    @media screen and (max-width: 600px) {
+      padding: 0.7rem 1rem;
+    }
   }
 
   .city-list-item {
@@ -198,13 +224,13 @@ button:focus-visible {
     margin-left: 1rem;
 
     &:hover {
-      border-bottom: 5px solid var(--primary-color);
+      border-bottom: 3px solid var(--primary-color);
       cursor: pointer;
     }
   }
 
   .selected {
-    border-bottom: 5px solid var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
   }
 
   .last-item {
@@ -216,7 +242,7 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: var(--screen-gutter);
+  padding-block: var(--screen-gutter);
   gap: 1rem;
   overflow: hidden;
 
@@ -243,6 +269,18 @@ button:focus-visible {
   }
 }
 
+// #app {
+//   @media (max-width: $breakpoint-xs) {
+//     font-size: 0.3rem;
+//   }
+//   @media (max-width: $breakpoint-sm) {
+//     font-size: 0.4rem;
+//   }
+//   @media (max-width: $breakpoint-md) {
+//     font-size: 0.5rem;
+//   }
+// }
+
 #hourly-forecast {
   .hourly-forecast-item-container {
     display: flex;
@@ -262,6 +300,10 @@ button:focus-visible {
     padding: 1rem;
     border-radius: 0.5rem;
 
+    > h1 {
+      margin-block: 0;
+    }
+
     @media (max-width: $breakpoint-md) {
       min-width: unset;
     }
@@ -280,6 +322,13 @@ button:focus-visible {
     overflow: scroll;
     gap: 1rem;
     padding-inline: 1rem;
+
+    @media (max-width: $breakpoint-sm) {
+      padding-inline: 0;
+    }
+    @media (max-width: $breakpoint-md) {
+      padding-inline: 0.5rem;
+    }
 
     .five-day-forecast-item {
       display: flex;
@@ -304,5 +353,12 @@ button:focus-visible {
         }
       }
     }
+  }
+}
+
+#hourly-forecast,
+#five-day-forecast {
+  @media (max-width: 600px) {
+    font-size: 0.4rem;
   }
 }
