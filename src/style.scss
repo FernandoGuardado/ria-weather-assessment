@@ -108,7 +108,7 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 8rem;
+  height: fit-content;
   color: white;
   padding-inline: var(--screen-gutter);
 
@@ -297,7 +297,7 @@ button:focus-visible {
     align-items: center;
     min-width: 15rem;
     flex: 0 0 auto;
-    padding: 1rem;
+    padding-block: 1rem;
     border-radius: 0.5rem;
 
     > h1 {
@@ -320,6 +320,7 @@ button:focus-visible {
     display: flex;
     flex-direction: column;
     overflow: scroll;
+    overflow-x: hidden;
     gap: 1rem;
     padding-inline: 1rem;
 
@@ -334,7 +335,6 @@ button:focus-visible {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-block: 1rem;
       border-bottom: 2px solid var(--primary-color);
       gap: 1rem;
 
@@ -360,5 +360,26 @@ button:focus-visible {
 #five-day-forecast {
   @media (max-width: 600px) {
     font-size: 0.4rem;
+  }
+}
+
+.five-day-forecast-item-container,
+.cities-list,
+.hourly-forecast-item-container {
+  scrollbar-color: var(--primary-color) transparent;
+  scrollbar-gutter: stable;
+
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
   }
 }
