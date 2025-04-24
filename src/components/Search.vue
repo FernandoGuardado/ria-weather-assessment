@@ -24,7 +24,7 @@ watch(() => search.value, (newSearch) => {
       .filter((c) => {
         return c.city.toLowerCase().includes(newSearch.toLowerCase());
       })
-      .slice(0, 5)
+      .slice(0, 30)
       .reduce((obj: CityRecords, city) => {
         obj[city.city] = city;
         return obj;
