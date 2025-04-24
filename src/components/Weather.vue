@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import FiveDayForecast from './FiveDayForecast.vue';
 import HourlyForecast from './HourlyForecast.vue';
-import { OpenWeatherMap } from '../api/open-weather-map';
+import { API_KEY, OpenWeatherMap } from '../api/open-weather-map';
 import { onBeforeMount, watch } from 'vue';
 import type { City } from '../App.vue';
 
@@ -10,6 +10,10 @@ const { city, api } = defineProps<{
   selectedCity: City;
   api: OpenWeatherMap;
 }>();
+
+const loadingText = !API_KEY
+  ? 'Cannot load weather data, missing OpenWeatherMap API key'
+  : 'Loading...';
 
 watch(() => city, async (newCity) => {
   try {
@@ -31,7 +35,7 @@ onBeforeMount(async () => {
 <template>
   <div id="weather">
     <div v-if="!api.data.value">
-      <h1>Loading...</h1>
+      <h1>{{ loadingText }}</h1>
     </div>
     <template v-else-if="api.data.value.list">
       <HourlyForecast :forecast="api.data.value" />

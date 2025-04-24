@@ -18,7 +18,7 @@ const metadata = ref(
   citiesMetadata
 )
 
-watch(() => search.value, (newSearch) => {
+watch(() => search.value.trim(), (newSearch) => {
   if (newSearch.length > 0) {
     metadata.value = Object.values(citiesMetadata)
       .filter((c) => {

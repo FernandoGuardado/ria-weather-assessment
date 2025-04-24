@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 import Cities from './components/Cities.vue'
 import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
@@ -67,11 +67,6 @@ const handleSearch = async (cityName: string) => {
 
 watch(selectedCity, () => {
   lastUpdated.value = new Date()
-})
-
-onMounted(() => {
-  console.log('App mounted')
-  console.log('Selected City:', selectedCity.value)
 })
 </script>
 

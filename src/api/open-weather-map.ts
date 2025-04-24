@@ -98,7 +98,7 @@ export interface Wind {
   gust: number;
 }
 
-const API_KEY: string = import.meta.env.VITE_OPEN_WEATHER_MAP_API_KEY;
+export const API_KEY: string = import.meta.env.VITE_OPEN_WEATHER_MAP_API_KEY;
 const BASE_URL = 'https://api.openweathermap.org/data/2.5';
 const FIVE_DAY_FORECAST_URL = `${BASE_URL}/forecast`;
 export const ICON_URL = 'https://openweathermap.org/img/wn';
