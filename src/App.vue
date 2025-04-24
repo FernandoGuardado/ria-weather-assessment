@@ -5,6 +5,7 @@ import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
 import Weather from './components/Weather.vue'
 import { OpenWeatherMap } from './api/open-weather-map'
+import { citiesMetadata, type CityRecord } from './utils/csv'
 
 export type City = {
   name: string
@@ -12,11 +13,25 @@ export type City = {
   lon: number
 }
 
-const cities = ref<City[]>([
-  { name: 'Rio de Janeiro', lat: -22.90278, lon: -43.2075 },
-  { name: 'Beijing', lat: 39.9075, lon: 116.39723 },
-  { name: 'Los Angeles', lat: 34.05223, lon: -118.24368 },
-])
+const defaultCities = [
+  "Rio de Janeiro",
+  "Beijing",
+  "Los Angeles",
+]
+
+const cities = ref<City[]>([])
+defaultCities.forEach((city) => {
+  const record = citiesMetadata[city]
+  if (record) {
+    cities.value.push({
+      name: record.city,
+      lat: record.latitude,
+      lon: record.longitude
+    })
+  } else {
+    console.warn(`City ${city} not found in metadata`)
+  }
+})
 
 const api = new OpenWeatherMap();
 const selectedCity = ref(cities.value[0])
@@ -38,7 +53,7 @@ watch(selectedCity, () => {
 onMounted(() => {
   console.log('App mounted')
   console.log('Selected City:', selectedCity.value)
-  console.log('Cities:', cities.value)
+  console.log('Cities:', JSON.stringify(cities.value, null, 2))
 })
 </script>
 
