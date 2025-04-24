@@ -40,7 +40,7 @@ watch(() => search.value, (newSearch) => {
     <input class="search-input" type="text" v-model="search" placeholder="Search for a city..." />
     <ul v-if="search" class="search-results">
       <li class="search-result-item" v-for="c in metadata" :key="c.city" @click="handleCitySelect(c.city)">
-        {{ c.city }}
+        {{ c.city }} {{ c.stateCode }}, {{ c.countryName }}
       </li>
     </ul>
   </div>
