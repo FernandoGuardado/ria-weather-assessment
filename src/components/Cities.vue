@@ -9,6 +9,7 @@ defineProps<{
 
 const emit = defineEmits<{
   (e: 'update:selectedCity', city: City): void;
+  (e: 'refresh-cities'): void;
 }>()
 
 const handleCitySelect = (city: City) => {
@@ -22,6 +23,6 @@ const handleCitySelect = (city: City) => {
       <CityListItem v-for="(city, index) in cities" :key="index" :city="city" :selectedCity="selectedCity.name"
         @update:selectedCity="handleCitySelect" :class="index === (cities.length - 1) && `last-item`" />
     </section>
-    <button id="refresh" @click="handleCitySelect(selectedCity)">Refresh</button>
+    <button id="refresh" @click="emit('refresh-cities')">Refresh</button>
   </div>
 </template>

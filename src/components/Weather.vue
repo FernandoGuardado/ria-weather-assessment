@@ -5,12 +5,11 @@ import { OpenWeatherMap } from '../api/open-weather-map';
 import { onBeforeMount, watch } from 'vue';
 import type { City } from '../App.vue';
 
-const { city } = defineProps<{
+const { city, api } = defineProps<{
   city: City;
   selectedCity: City;
+  api: OpenWeatherMap;
 }>();
-
-const api = new OpenWeatherMap();
 
 watch(() => city, async (newCity) => {
   try {
