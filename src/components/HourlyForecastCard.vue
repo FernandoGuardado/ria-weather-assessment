@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ICON_URL, type City, type List } from '../api/open-weather-map';
+import { type City, type List } from '../api/open-weather-map';
 import WeatherIcon from './WeatherIcon.vue';
 
 const { forecast, city } = defineProps<{

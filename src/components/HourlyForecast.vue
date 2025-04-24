@@ -7,7 +7,15 @@ const { forecast } = defineProps<{
   forecast: FiveDayForecast;
 }>();
 
-const dailyForecast = computed(() => {
+const hourlyForecast = computed(() => {
+  const forecastList = document.querySelector('.hourly-forecast-item-container');
+  if (forecastList) {
+    forecastList.scrollTo({
+      left: 0,
+      behavior: 'smooth',
+    });
+  }
+
   return forecast.list.slice(0, 9).map((item) => item);
 })
 </script>
@@ -17,7 +25,7 @@ const dailyForecast = computed(() => {
     <h2>Hourly Forecast</h2>
 
     <div class="hourly-forecast-item-container">
-      <HourlyForecastCard v-for="f in dailyForecast" :key="f.dt" :city="forecast.city" :forecast="f" />
+      <HourlyForecastCard v-for="f in hourlyForecast" :key="f.dt" :city="forecast.city" :forecast="f" />
     </div>
   </div>
 </template>

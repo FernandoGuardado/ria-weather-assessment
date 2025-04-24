@@ -6,6 +6,6 @@ defineProps<{
 
 <template>
   <div id="footer">
-    <p>Last Updated: {{ lastUpdated.toDateString() }}</p>
+    <p>Last Updated: {{ lastUpdated.toLocaleString() }}</p>
   </div>
 </template>

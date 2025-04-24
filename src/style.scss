@@ -20,9 +20,8 @@
 
 $breakpoint-xs: 320px;
 $breakpoint-sm: 500px;
-$breakpoint-md: 800px;
-$breakpoint-lg: 1200px;
-$breakpoint-xl: 1600px;
+$breakpoint-md: 1000px;
+$breakpoint-lg: 1400px;
 
 a {
   font-weight: 500;
@@ -43,6 +42,10 @@ body {
 
   @media (max-width: $breakpoint-md) {
     font-size: 0.4rem;
+  }
+
+  @media (max-width: $breakpoint-lg) {
+    font-size: 0.6rem;
   }
 }
 
@@ -94,6 +97,14 @@ button:focus-visible {
   height: 8rem;
   color: white;
   padding-inline: var(--screen-gutter);
+
+  @media (max-width: $breakpoint-md) {
+    height: 4rem;
+  }
+
+  @media (max-width: $breakpoint-lg) {
+    height: 6rem;
+  }
 }
 
 #footer {
@@ -108,19 +119,45 @@ button:focus-visible {
   background-color: var(--primary-color-light);
   display: flex;
   align-items: center;
-  overflow-x: scroll;
-  gap: 2rem;
+  justify-content: space-between;
   padding-inline: var(--screen-gutter);
-  padding-bottom: 0.75rem;
-  scrollbar-color: var(--primary-color) transparent;
+  gap: 1rem;
+
+  > section {
+    display: flex;
+    align-items: inherit;
+    gap: 2rem;
+    overflow-x: scroll;
+    padding-bottom: 0.75rem;
+
+    > h2 {
+      margin: 0;
+      padding-inline: 0.5rem;
+    }
+  }
+
+  #refresh {
+    padding: 1rem 2.5rem;
+    font-weight: 900;
+  }
 
   .city-list-item {
     text-align: center;
-    min-width: 10rem;
+    min-width: fit-content;
+    margin-left: 1rem;
+
+    &:hover {
+      border-bottom: 5px solid var(--primary-color);
+      cursor: pointer;
+    }
   }
 
   .selected {
     border-bottom: 5px solid var(--primary-color);
+  }
+
+  .last-item {
+    margin-right: 1rem;
   }
 }
 
@@ -144,6 +181,13 @@ button:focus-visible {
     > h2 {
       border-bottom: 2px solid var(--primary-color);
       padding-bottom: 0.5rem;
+    }
+  }
+
+  .weather-icon {
+    @media (max-width: $breakpoint-md) {
+      width: 3rem;
+      height: 3rem;
     }
   }
 }

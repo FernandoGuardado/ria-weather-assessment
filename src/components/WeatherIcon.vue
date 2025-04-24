@@ -8,5 +8,5 @@ defineProps<{
 </script>
 
 <template>
-  <img :src="`${ICON_URL}/${icon}@2x.png`" :alt="description" :title="description" />
+  <img class="weather-icon" :src="`${ICON_URL}/${icon}@2x.png`" :alt="description" :title="description" />
 </template>

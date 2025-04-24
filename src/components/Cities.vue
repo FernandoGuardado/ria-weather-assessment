@@ -18,8 +18,10 @@ const handleCitySelect = (city: City) => {
 
 <template>
   <div id="cities">
-    <div class="city-list" v-for="(city, index) in cities" :key="index">
-      <CityListItem :city :selectedCity="selectedCity.name" @update:selectedCity="handleCitySelect" />
-    </div>
+    <section>
+      <CityListItem v-for="(city, index) in cities" :key="index" :city="city" :selectedCity="selectedCity.name"
+        @update:selectedCity="handleCitySelect" :class="index === (cities.length - 1) && `last-item`" />
+    </section>
+    <button id="refresh" @click="handleCitySelect(selectedCity)">Refresh</button>
   </div>
 </template>
